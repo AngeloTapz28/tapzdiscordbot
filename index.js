@@ -5,13 +5,16 @@ require('dotenv').config();
 
 const app = express();
 
-// Web server for Render/UptimeRobot
+// REQUIRED FOR RENDER
 app.get('/', (req, res) => {
     res.send('Bot is alive!');
 });
 
-app.listen(3000, () => {
-    console.log('Web server running.');
+// IMPORTANT: use Render's port
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Web server running on port ${PORT}`);
 });
 
 const client = new Client({
